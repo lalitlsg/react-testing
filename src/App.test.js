@@ -1,6 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import App, { add, total } from "./App";
+import { render } from "@testing-library/react";
 
 // test("renders learn react link", () => {
 //   const { getByText } = render(<App />);
@@ -22,9 +22,15 @@ import App, { add, total } from "./App";
 
 // component render testing
 
-test("heading should contain", () => {
-  const root = document.createElement("div");
-  ReactDOM.render(<App />, root);
-  expect(root.querySelector("h1").textContent).toBe("Learn React Testing");
-  expect(root.querySelector("button").id).toBe("btn");
+// test("should contain", () => {
+//   const root = document.createElement("div");
+//   ReactDOM.render(<App />, root);
+//   expect(root.querySelector("h1").textContent).toBe("Learn React Testing");
+//   expect(root.querySelector("button").id).toBe("btn");
+// });
+
+test("should contain", () => {
+  const { getByText } = render(<App />);
+  getByText("Learn React Testing");
+  getByText("Click");
 });
